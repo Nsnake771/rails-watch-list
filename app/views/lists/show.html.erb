@@ -1,0 +1,14 @@
+<h1><%= @list.name %></h1>
+
+<ul>
+  <% @list.bookmarks.each do |bm| %>
+    <li>
+      <%= bm.movie.title %>
+      <% if bm.comment.present? %> — "<%= bm.comment %>" <% end %>
+      <%= button_to "Retirer", bookmark_path(bm), method: :delete,
+            data: { confirm: "Supprimer ?" } %>
+    </li>
+  <% end %>
+</ul>
+<h2>Ajouter un film</h2>
+<%= render "bookmarks/form", list: @list, bookmark: @bookmark %>

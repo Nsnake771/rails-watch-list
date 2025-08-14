@@ -1,0 +1,18 @@
+<h1>Mes listes de films</h1>
+
+<%= link_to "➕ Nouvelle liste", new_list_path, class: "btn btn-primary" %>
+
+<hr>
+
+<% if @lists.any? %>
+  <div class="list-grid">
+    <% @lists.each do |list| %>
+      <div class="list-card">
+        <h2><%= link_to list.name, list_path(list) %></h2>
+        <p><%= pluralize(list.movies.count, "film") %></p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>Aucune liste pour le moment. Crée ta première liste !</p>
+<% end %>
